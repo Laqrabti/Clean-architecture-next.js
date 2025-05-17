@@ -30,8 +30,11 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# env files (replace the existing .env* line)
+.env*.local
+.env.staging
+.env.production
+!.env.example  # Keep this template file
 
 # vercel
 .vercel
