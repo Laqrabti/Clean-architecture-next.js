@@ -1,32 +1,47 @@
 {
-  "name": "nextjs",
-  "version": "0.1.0",
+  "name": "clean-architecture-next.js",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "script": "ts-node --project tsconfig.scripts.json",
+    "script:executable": "npm run script ./app/scripts/executable.ts",
+    "script:watch": "nodemon --watch ./app/scripts --exec \"npm run script\"",
+    "x:script": "tsx",
+    "x:executable": "npm run x:script ./app/scripts/executable.ts",
+    "x:watch": "nodemon --watch ./app/scripts --exec \"npm run x:script\"",
+    "tsc": "tsc",
+    "tsc:scripts": "tsc --project tsconfig.scripts.json"
   },
   "dependencies": {
-    "drizzle-orm": "^0.43.1",
-    "next": "15.3.2",
-    "postgres": "^3.4.5",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "zod": "^3.24.4"
+    "@auth/drizzle-adapter": "^1.10.0",
+    "@types/jsonwebtoken": "^9.0.10",
+    "dompurify": "^3.2.6",
+    "jsdom": "^26.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "next": "^15.3.4",
+    "next-auth": "^4.24.11",
+    "postgres": "^3.4.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "dotenv": "^16.5.0",
-    "drizzle-kit": "^0.31.1",
-    "eslint": "^9",
-    "eslint-config-next": "15.3.2",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "@tailwindcss/postcss": "^4.1.10",
+    "@types/node": "^20.0.0",
+    "@types/nodemon": "^1.0.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^8.0.0",
+    "eslint-config-next": "14.0.0",
+    "nodemon": "^3.0.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17",
+    "ts-node": "^10.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
   }
 }
