@@ -15,6 +15,13 @@
       "when": 1747462688758,
       "tag": "0001_acoustic_hitman",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1753919402775,
+      "tag": "0002_strange_mister_fear",
+      "breakpoints": true
     }
   ]
 }
