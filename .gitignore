@@ -44,3 +44,10 @@ yarn-error.log*
 next-env.d.ts
 
 .env
+
+
+**/.terraform/*
+**/.terraform.lock.hcl
+**/terraform.tfstate*
+**/terraform.tfstate.backup*
+
