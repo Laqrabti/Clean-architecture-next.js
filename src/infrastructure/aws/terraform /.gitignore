@@ -1,5 +1,0 @@
-# Terraform files
-*.tfstate
-*.tfstate.backup
-.terraform/
-terraform-provider-aws*

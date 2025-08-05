@@ -47,7 +47,9 @@ next-env.d.ts
 
 
 **/.terraform/*
-**/.terraform.lock.hcl
-**/terraform.tfstate*
-**/terraform.tfstate.backup*
-
+*.tfstate
+*.tfstate.*
+*.tfvars
+terraform.rc
+terraform.tfvars
+*.terraform.lock.hcl
