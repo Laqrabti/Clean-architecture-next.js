@@ -1,0 +1,69 @@
+# .dockerignore
+# Dependencies
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Production builds
+.next
+dist
+build
+
+# Testing
+coverage
+.vscode
+.nyc_output
+
+# Environment files
+.env*.local
+.env
+
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Terraform and infrastructure
+0-terraform/
+terraform/
+**/*.tf
+**/*.tfstate
+**/*.tfvars
+
+# Database and migrations
+drizzle/
+migrations/
+*.sql
+*.db
+
+# Scripts and executables
+scripts/
+**/*.mts
+**/*.cts
+**/*.tsbuildinfo
+
+# OS and IDE
+.DS_Store
+Thumbs.db
+.idea
+*.swp
+*.swo
+
+# Git
+.git
+.gitignore
+
+# Documentation
+README.md
+LICENSE
+
+# Source files (only needed for build, not runtime)
+src/
+*.ts
+*.tsx
