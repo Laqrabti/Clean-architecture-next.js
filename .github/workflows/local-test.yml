@@ -7,7 +7,7 @@ on:
 
 jobs:
   nextjs-test:
-    runs-on: self-hosted  # Uses your local runner
+    runs-on: ubuntu-latest 
     
     steps:
     - name: Checkout code
