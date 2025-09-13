@@ -3,7 +3,7 @@
 
 import { useState } from 'react';
 
-export function UserForm() {
+export default function UserForm() {
   const [formData, setFormData] = useState({
     email: '',
     name: ''

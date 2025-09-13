@@ -1,0 +1,37 @@
+name: Local Next.js Test
+
+on:
+  workflow_dispatch:  # Manual trigger
+  push:
+    branches: [main, test*]
+
+jobs:
+  nextjs-test:
+    runs-on: self-hosted  # Uses your local runner
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Run tests
+      run: npm test
+    
+    - name: Build project
+      run: npm run build
+    
+    - name: Notify success
+      if: success()
+      run: echo "✅ Build succeeded on local runner!"
+    
+    - name: Notify failure
+      if: failure()
+      run: echo "❌ Build failed!" && exit 1
