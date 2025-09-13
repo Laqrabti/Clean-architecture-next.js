@@ -2,7 +2,7 @@
 import { NextResponse } from 'next/server';
 import { CreateUserUseCase } from '@/src/application/use-cases/create-user';
 import { ZodError } from 'zod';
-import { User } from '@/src/core/entity';
+import { User } from '@/src/domain/entities/User';
 
 export async function POST(request: Request) {
   try {

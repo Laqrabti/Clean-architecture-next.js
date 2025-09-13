@@ -1,10 +1,10 @@
-// app/test/page.tsx
-import TestButton from "./components/TestButton";
+// app/page.tsx
+import {UserForm} from "./components/user";  // adjust path if needed
 
-export default function TestPage() {
+export default function Page() {
   return (
-    <main className="min-h-screen p-24">
-      <TestButton />
+    <main style={{ padding: 20 }}>
+      <UserForm />
     </main>
   );
 }
