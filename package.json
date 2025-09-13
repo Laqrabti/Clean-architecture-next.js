@@ -10,7 +10,6 @@
     "start": "next start",
     "lint": "next lint",
     "app-script": "tsx ./app/scripts/app-script.mts",
-
     "test": "vitest run",
     "test:watch": "vitest"
   },
@@ -21,7 +20,6 @@
     "drizzle-orm": "^0.44.3",
     "jsonwebtoken": "^9.0.2",
     "next": "^15.4.2",
-    "next-auth": "^4.24.11",
     "node-fetch": "^3.3.2",
     "postgres": "^3.4.7",
     "react": "^19.1.0",

@@ -7,7 +7,7 @@ on:
 
 jobs:
   nextjs-test:
-    runs-on: ubuntu-latest 
+    runs-on: Ubuntu-latest # Uses your local runner
     
     steps:
     - name: Checkout code
@@ -24,9 +24,8 @@ jobs:
     
     - name: Run tests
       run: npm test
-    
-
-    
+    - name: Build project
+      run: npm run build
     - name: Notify success
       if: success()
       run: echo "✅ Build succeeded on local runner!"
