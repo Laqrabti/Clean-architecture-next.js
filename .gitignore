@@ -1,98 +1,28 @@
-# -----------------------------
-# General References
-# -----------------------------
-# See https://help.github.com/articles/ignoring-files/
-
-# -----------------------------
-# Node / Yarn / PNPM / Dependencies
-# -----------------------------
-node_modules/
-.pnp/
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
-
-# -----------------------------
-# Next.js
-# -----------------------------
-.next/
-out/
-build/                # for production builds
-
-# -----------------------------
-# Testing
-# -----------------------------
-coverage/
-
-# -----------------------------
-# TypeScript
-# -----------------------------
-*.tsbuildinfo
-next-env.d.ts
-
-# -----------------------------
-# Logs
-# -----------------------------
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-.pnpm-debug.log*
-
-# -----------------------------
-# macOS & Misc
-# -----------------------------
-.DS_Store
-
-# -----------------------------
-# Environment Variables
-# -----------------------------
-.env*
-!.env.example         # Keep the example template only
-
-# -----------------------------
-# Vercel
-# -----------------------------
-.vercel/
-
-# -----------------------------
 # Terraform
-# -----------------------------
-# Local Terraform directories and lockfiles
-**/.terraform/
-**/.terraform.lock.hcl
-
-# State files (sensitive)
+**/.terraform/*
 *.tfstate
 *.tfstate.*
-*.tfstate.backup
+.terraform.tfstate.lock.info
 
-# Terraform variable files (secrets)
-*.tfvars
-!example.tfvars
+# Environment files
+*.env
+.env.local
 
-# Terraform override files
-override.tf
-override.tf.json
-*_override.tf
-*_override.tf.json
+# Sensitive files
+*.key
+*.pem
+*.cert
 
-# Terraform plans (keep if useful, but be aware)
-*.tfplan
-*.hcl
+# Node
+node_modules/
+npm-debug.log*
 
-# Terraform CLI config
-.terraformrc
-terraform.rc
+# OS
+.DS_Store
+Thumbs.db
 
-# -----------------------------
-# Crash logs
-# -----------------------------
-crash.log
-crash.*.log
-.terraform/
-terraform/
-terraform/.terraform/
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
