@@ -95,3 +95,4 @@ crash.log
 crash.*.log
 .terraform/
 terraform/
+terraform/.terraform/
