@@ -13,10 +13,12 @@
     "db:migrate": "drizzle-kit migrate --config ./src/infrastructure/database/drizzle.config.ts"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.879.0",
+    "@aws-sdk/s3-request-presigner": "^3.879.0",
     "cssnano": "^7.0.1",
     "drizzle-orm": "^0.43.1",
     "framer-motion": "^12.23.12",
-    "next": "15.3.2",
+    "next": "^15.4.7",
     "postcss-import": "^15.1.0",
     "postcss-nesting": "^12.1.5",
     "postgres": "^3.4.5",

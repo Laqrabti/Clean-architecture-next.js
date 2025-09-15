@@ -1,0 +1,110 @@
+2025-08-26 08:20:11,907 - MainThread - awscli.clidriver - DEBUG - CLI version: aws-cli/2.27.55 Python/3.13.5 Darwin/24.6.0 source/arm64
+2025-08-26 08:20:11,907 - MainThread - awscli.clidriver - DEBUG - Arguments entered to CLI: ['bedrock-runtime', 'invoke-model', '--model-id', 'amazon.titan-tg1-large', '--body', '{"inputText":"test"}', '--cli-binary-format', 'raw-in-base64-out', '--region', 'us-east-1', '--debug']
+2025-08-26 08:20:11,919 - MainThread - botocore.hooks - DEBUG - Event building-command-table.main: calling handler <function add_s3 at 0x10452eb60>
+2025-08-26 08:20:11,919 - MainThread - botocore.hooks - DEBUG - Event building-command-table.main: calling handler <function add_ddb at 0x1041f8040>
+2025-08-26 08:20:11,919 - MainThread - botocore.hooks - DEBUG - Event building-command-table.main: calling handler <bound method BasicCommand.add_command of <class 'awscli.customizations.configure.configure.ConfigureCommand'>>
+2025-08-26 08:20:11,919 - MainThread - botocore.hooks - DEBUG - Event building-command-table.main: calling handler <function change_name at 0x10415c220>
+2025-08-26 08:20:11,919 - MainThread - botocore.hooks - DEBUG - Event building-command-table.main: calling handler <function change_name at 0x10415d260>
+2025-08-26 08:20:11,919 - MainThread - botocore.hooks - DEBUG - Event building-command-table.main: calling handler <function alias_opsworks_cm at 0x104484b80>
+2025-08-26 08:20:11,919 - MainThread - botocore.hooks - DEBUG - Event building-command-table.main: calling handler <function add_history_commands at 0x104458d60>
+2025-08-26 08:20:11,919 - MainThread - botocore.hooks - DEBUG - Event building-command-table.main: calling handler <bound method BasicCommand.add_command of <class 'awscli.customizations.devcommands.CLIDevCommand'>>
+2025-08-26 08:20:11,919 - MainThread - botocore.hooks - DEBUG - Event building-command-table.main: calling handler <function add_waiters at 0x10456c180>
+2025-08-26 08:20:11,919 - MainThread - botocore.hooks - DEBUG - Event building-command-table.main: calling handler <bound method AliasSubCommandInjector.on_building_command_table of <awscli.alias.AliasSubCommandInjector object at 0x104585e80>>
+2025-08-26 08:20:11,919 - MainThread - botocore.loaders - DEBUG - Loading JSON file: /opt/homebrew/Cellar/awscli/2.27.55/libexec/lib/python3.13/site-packages/awscli/data/cli.json
+2025-08-26 08:20:11,920 - MainThread - botocore.hooks - DEBUG - Event top-level-args-parsed: calling handler <function resolve_types at 0x10441f880>
+2025-08-26 08:20:11,920 - MainThread - botocore.hooks - DEBUG - Event top-level-args-parsed: calling handler <function no_sign_request at 0x10441fba0>
+2025-08-26 08:20:11,920 - MainThread - botocore.hooks - DEBUG - Event top-level-args-parsed: calling handler <function resolve_verify_ssl at 0x10441fb00>
+2025-08-26 08:20:11,920 - MainThread - botocore.hooks - DEBUG - Event top-level-args-parsed: calling handler <function resolve_cli_read_timeout at 0x10441fce0>
+2025-08-26 08:20:11,920 - MainThread - botocore.hooks - DEBUG - Event top-level-args-parsed: calling handler <function resolve_cli_connect_timeout at 0x10441fc40>
+2025-08-26 08:20:11,920 - MainThread - botocore.hooks - DEBUG - Event top-level-args-parsed: calling handler <built-in method update of dict object at 0x1045d5680>
+2025-08-26 08:20:11,920 - MainThread - botocore.session - DEBUG - Setting config variable for region to 'us-east-1'
+2025-08-26 08:20:11,920 - MainThread - awscli.clidriver - DEBUG - CLI version: aws-cli/2.27.55 Python/3.13.5 Darwin/24.6.0 source/arm64
+2025-08-26 08:20:11,921 - MainThread - awscli.clidriver - DEBUG - Arguments entered to CLI: ['bedrock-runtime', 'invoke-model', '--model-id', 'amazon.titan-tg1-large', '--body', '{"inputText":"test"}', '--cli-binary-format', 'raw-in-base64-out', '--region', 'us-east-1', '--debug']
+2025-08-26 08:20:11,921 - MainThread - botocore.hooks - DEBUG - Event session-initialized: calling handler <function add_timestamp_parser at 0x104546840>
+2025-08-26 08:20:11,921 - MainThread - botocore.hooks - DEBUG - Event session-initialized: calling handler <function register_uri_param_handler at 0x1031e4ea0>
+2025-08-26 08:20:11,921 - MainThread - botocore.hooks - DEBUG - Event session-initialized: calling handler <function add_binary_formatter at 0x103f56980>
+2025-08-26 08:20:11,921 - MainThread - botocore.hooks - DEBUG - Event session-initialized: calling handler <function no_pager_handler at 0x103ef4360>
+2025-08-26 08:20:11,921 - MainThread - botocore.hooks - DEBUG - Event session-initialized: calling handler <function inject_assume_role_provider_cache at 0x103f55c60>
+2025-08-26 08:20:11,922 - MainThread - botocore.utils - DEBUG - IMDS ENDPOINT: http://169.254.169.254/
+2025-08-26 08:20:11,926 - MainThread - botocore.hooks - DEBUG - Event session-initialized: calling handler <function attach_history_handler at 0x1044371a0>
+2025-08-26 08:20:11,926 - MainThread - botocore.hooks - DEBUG - Event session-initialized: calling handler <function inject_json_file_cache at 0x1041e5800>
+2025-08-26 08:20:11,936 - MainThread - botocore.loaders - DEBUG - Loading JSON file: /opt/homebrew/Cellar/awscli/2.27.55/libexec/lib/python3.13/site-packages/awscli/botocore/data/bedrock-runtime/2023-09-30/service-2.json
+2025-08-26 08:20:11,938 - MainThread - botocore.hooks - DEBUG - Event building-command-table.bedrock-runtime: calling handler functools.partial(<function _remove_commands at 0x1044868e0>, commands_to_remove=['invoke-model-with-bidirectional-stream', 'invoke-model-with-response-stream', 'converse-stream'])
+2025-08-26 08:20:11,938 - MainThread - awscli.customizations.removals - DEBUG - Removing operation: invoke-model-with-bidirectional-stream
+2025-08-26 08:20:11,938 - MainThread - awscli.customizations.removals - DEBUG - Removing operation: invoke-model-with-response-stream
+2025-08-26 08:20:11,938 - MainThread - awscli.customizations.removals - DEBUG - Removing operation: converse-stream
+2025-08-26 08:20:11,938 - MainThread - botocore.hooks - DEBUG - Event building-command-table.bedrock-runtime: calling handler <function add_waiters at 0x10456c180>
+2025-08-26 08:20:11,945 - MainThread - botocore.loaders - DEBUG - Loading JSON file: /opt/homebrew/Cellar/awscli/2.27.55/libexec/lib/python3.13/site-packages/awscli/botocore/data/bedrock-runtime/2023-09-30/waiters-2.json
+2025-08-26 08:20:11,945 - MainThread - botocore.hooks - DEBUG - Event building-command-table.bedrock-runtime: calling handler <bound method AliasSubCommandInjector.on_building_command_table of <awscli.alias.AliasSubCommandInjector object at 0x104585e80>>
+2025-08-26 08:20:11,946 - MainThread - awscli.clidriver - DEBUG - OrderedDict({'body': <awscli.arguments.CLIArgument object at 0x1047bc830>, 'content-type': <awscli.arguments.CLIArgument object at 0x1045efb10>, 'accept': <awscli.arguments.CLIArgument object at 0x1045efc50>, 'model-id': <awscli.arguments.CLIArgument object at 0x1045f2060>, 'trace': <awscli.arguments.CLIArgument object at 0x1045f2190>, 'guardrail-identifier': <awscli.arguments.CLIArgument object at 0x104798710>, 'guardrail-version': <awscli.arguments.CLIArgument object at 0x10458ef10>, 'performance-config-latency': <awscli.arguments.CLIArgument object at 0x10458ee00>})
+2025-08-26 08:20:11,946 - MainThread - botocore.hooks - DEBUG - Event building-argument-table.bedrock-runtime.invoke-model: calling handler <function add_streaming_output_arg at 0x104545da0>
+2025-08-26 08:20:11,946 - MainThread - botocore.hooks - DEBUG - Event building-argument-table.bedrock-runtime.invoke-model: calling handler <function add_cli_input_json at 0x103f574c0>
+2025-08-26 08:20:11,946 - MainThread - botocore.hooks - DEBUG - Event building-argument-table.bedrock-runtime.invoke-model: calling handler <function add_cli_input_yaml at 0x103f742c0>
+2025-08-26 08:20:11,946 - MainThread - botocore.hooks - DEBUG - Event building-argument-table.bedrock-runtime.invoke-model: calling handler <function unify_paging_params at 0x1041f8ae0>
+2025-08-26 08:20:11,954 - MainThread - botocore.loaders - DEBUG - Loading JSON file: /opt/homebrew/Cellar/awscli/2.27.55/libexec/lib/python3.13/site-packages/awscli/botocore/data/bedrock-runtime/2023-09-30/paginators-1.json
+2025-08-26 08:20:11,955 - MainThread - botocore.hooks - DEBUG - Event building-argument-table.bedrock-runtime.invoke-model: calling handler <function add_generate_skeleton at 0x10441e020>
+2025-08-26 08:20:11,955 - MainThread - botocore.hooks - DEBUG - Event building-command-table.bedrock-runtime_invoke-model: calling handler <function add_waiters at 0x10456c180>
+2025-08-26 08:20:11,955 - MainThread - botocore.hooks - DEBUG - Event building-command-table.bedrock-runtime_invoke-model: calling handler <bound method AliasSubCommandInjector.on_building_command_table of <awscli.alias.AliasSubCommandInjector object at 0x104585e80>>
+2025-08-26 08:20:11,955 - MainThread - awscli.clidriver - DEBUG - Exception caught in main()
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/argparse.py", line 1937, in _parse_known_args2
+    namespace, args = self._parse_known_args(args, namespace, intermixed)
+                      ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/argparse.py", line 2234, in _parse_known_args
+    raise ArgumentError(None, _('the following arguments are required: %s') %
+               ', '.join(required_actions))
+argparse.ArgumentError: the following arguments are required: outfile
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/awscli/2.27.55/libexec/lib/python3.13/site-packages/awscli/clidriver.py", line 517, in main
+    return command_table[parsed_args.command](remaining, parsed_args)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/awscli/2.27.55/libexec/lib/python3.13/site-packages/awscli/clidriver.py", line 654, in __call__
+    return command_table[parsed_args.operation](remaining, parsed_globals)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/awscli/2.27.55/libexec/lib/python3.13/site-packages/awscli/clidriver.py", line 829, in __call__
+    parsed_args, remaining = operation_parser.parse_known_args(args)
+                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/opt/homebrew/Cellar/awscli/2.27.55/libexec/lib/python3.13/site-packages/awscli/argparser.py", line 227, in parse_known_args
+    return super(ArgTableArgParser, self).parse_known_args(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        args, namespace
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/Cellar/awscli/2.27.55/libexec/lib/python3.13/site-packages/awscli/argparser.py", line 95, in parse_known_args
+    parsed, remaining = super(CLIArgParser, self).parse_known_args(
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        args, namespace
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/argparse.py", line 1908, in parse_known_args
+    return self._parse_known_args2(args, namespace, intermixed=False)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/argparse.py", line 1939, in _parse_known_args2
+    self.error(str(err))
+    ~~~~~~~~~~^^^^^^^^^^
+  File "/opt/homebrew/Cellar/awscli/2.27.55/libexec/lib/python3.13/site-packages/awscli/argparser.py", line 130, in error
+    raise ArgParseException(f'{usage_message}\n{error_message}')
+awscli.argparser.ArgParseException: usage: aws [options] <command> <subcommand> [<subcommand> ...] [parameters]
+To see help text, you can run:
+
+  aws help
+  aws <command> help
+  aws <command> <subcommand> help
+
+aws: error: the following arguments are required: outfile
+
+
+usage: aws [options] <command> <subcommand> [<subcommand> ...] [parameters]
+To see help text, you can run:
+
+  aws help
+  aws <command> help
+  aws <command> <subcommand> help
+
+aws: error: the following arguments are required: outfile
+

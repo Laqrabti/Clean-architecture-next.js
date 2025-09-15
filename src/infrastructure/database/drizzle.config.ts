@@ -2,7 +2,7 @@ import { config } from 'dotenv';
 import path from 'path';
 import { defineConfig } from 'drizzle-kit';
 
-// Load .env from project root
+
 config({ path: path.resolve(__dirname, '../../../.env') });
 
 console.log('ENV PATH:', path.resolve(__dirname, '../../../.env'));

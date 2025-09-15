@@ -1,8 +1,13 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# -----------------------------
+# General References
+# -----------------------------
+# See https://help.github.com/articles/ignoring-files/
 
-# dependencies
-/node_modules
-/.pnp
+# -----------------------------
+# Node / Yarn / PNPM / Dependencies
+# -----------------------------
+node_modules/
+.pnp/
 .pnp.*
 .yarn/*
 !.yarn/patches
@@ -10,46 +15,82 @@
 !.yarn/releases
 !.yarn/versions
 
-# testing
-/coverage
+# -----------------------------
+# Next.js
+# -----------------------------
+.next/
+out/
+build/                # for production builds
 
-# next.js
-/.next/
-/out/
+# -----------------------------
+# Testing
+# -----------------------------
+coverage/
 
-# production
-/build
-
-# misc
-.DS_Store
-*.pem
-
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
-
-# env files (replace the existing .env* line)
-.env*.local
-.env.staging
-.env.production
-!.env.example  # Keep this template file
-
-# vercel
-.vercel
-
-# typescript
+# -----------------------------
+# TypeScript
+# -----------------------------
 *.tsbuildinfo
 next-env.d.ts
 
-.env
+# -----------------------------
+# Logs
+# -----------------------------
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-debug.log*
 
+# -----------------------------
+# macOS & Misc
+# -----------------------------
+.DS_Store
 
-**/.terraform/*
+# -----------------------------
+# Environment Variables
+# -----------------------------
+.env*
+!.env.example         # Keep the example template only
+
+# -----------------------------
+# Vercel
+# -----------------------------
+.vercel/
+
+# -----------------------------
+# Terraform
+# -----------------------------
+# Local Terraform directories and lockfiles
+**/.terraform/
+**/.terraform.lock.hcl
+
+# State files (sensitive)
 *.tfstate
 *.tfstate.*
+*.tfstate.backup
+
+# Terraform variable files (secrets)
 *.tfvars
+!example.tfvars
+
+# Terraform override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Terraform plans (keep if useful, but be aware)
+*.tfplan
+*.hcl
+
+# Terraform CLI config
+.terraformrc
 terraform.rc
-terraform.tfvars
-*.terraform.lock.hcl
+
+# -----------------------------
+# Crash logs
+# -----------------------------
+crash.log
+crash.*.log
+.terraform/
