@@ -1,28 +1,63 @@
-# Terraform
-**/.terraform/*
+# Terraform files
+.terraform/
 *.tfstate
+*.tfstate.backup
 *.tfstate.*
-.terraform.tfstate.lock.info
-
-# Environment files
-*.env
-.env.local
-
-# Sensitive files
-*.key
-*.pem
-*.cert
-
-# Node
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+*.tfvars
+*.tfvars.json
+*.tfplan
+.terraformrc
+terraform.rc
+ 
+# Node.js
 node_modules/
 npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-debug.log*
+.pnp/
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+*.tsbuildinfo
 
-# OS
-.DS_Store
-Thumbs.db
+# Next.js
+.next/
+out/
+build/
+next-env.d.ts
 
-# IDE
+# Testing
+coverage/
+
+# Environment variables
+.env*
+!.env.example
+
+# Vercel
+.vercel/
+
+# Editor
+*.swp
 .vscode/
 .idea/
-*.swp
-*.swo
+.DS_Store
+
+# Docker
+.docker/
+
+# Kubernetes
+kubeconfig
+
+# Ansible
+*.retry
