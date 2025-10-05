@@ -1,0 +1,11 @@
+name: new
+
+on:
+  push:
+    branches: ["feature/branch"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
