@@ -15,4 +15,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: echo "Running tests..."
+      - run: | 
+          echo "Running tests..."
+          sleep 20
