@@ -17,6 +17,6 @@ jobs:
       - uses: actions/checkout@v4
       - run: | 
           echo "Running tests..."
-          sleep 20
+          sleep 40
       - name: hassan
         run: echo "hello has"
