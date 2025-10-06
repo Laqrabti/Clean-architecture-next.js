@@ -19,4 +19,4 @@ jobs:
           echo "Running tests..."
           sleep 20
       - name: hassan
-        run: echo "hello hassan"
+        run: echo "hello has"
