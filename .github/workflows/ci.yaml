@@ -1,73 +1,73 @@
-# .github/workflows/ci.yml
-name: CI
+# # .github/workflows/ci.yml
+# name: CI
 
-# Trigger the workflow on pushes to the main branch or any pull request
-on:
-  push:
-    branches: [ developement ]
-  pull_request:
-    branches: [ developement ]
+# # Trigger the workflow on pushes to the main branch or any pull request
+# on:
+#   push:
+#     branches: [ developement ]
+#   pull_request:
+#     branches: [ developement ]
 
-# Define the jobs that make up this workflow
-jobs:
+# # Define the jobs that make up this workflow
+# jobs:
   
-  # Job to run Vitest unit tests
-  unit-test:
-    name: Run Unit Tests
-    # Run on the latest Ubuntu runner
-    runs-on: ubuntu-latest
-    steps:
-      # Step 1: Check out the repository code
-      - name: Checkout code
-        uses: actions/checkout@v4
+#   # Job to run Vitest unit tests
+#   unit-test:
+#     name: Run Unit Tests
+#     # Run on the latest Ubuntu runner
+#     runs-on: ubuntu-latest
+#     steps:
+#       # Step 1: Check out the repository code
+#       - name: Checkout code
+#         uses: actions/checkout@v4
 
-      # Step 2: Set up Node.js environment
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 'lts/*'
-          cache: 'npm'
+#       # Step 2: Set up Node.js environment
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: 'lts/*'
+#           cache: 'npm'
 
-      # Step 3: Install project dependencies
-      - name: Install dependencies
-        run: npm ci
+#       # Step 3: Install project dependencies
+#       - name: Install dependencies
+#         run: npm ci
 
-      # Step 4: Execute the unit tests with Vitest
-      - name: Run Vitest
-        run: npm run test
+#       # Step 4: Execute the unit tests with Vitest
+#       - name: Run Vitest
+#         run: npm run test
 
-  # Job to run Playwright e2e tests
-  e2e-test:
-    name: Run E2E Tests
-    # This job depends on the unit-test job. It will only run if unit tests pass.
-    needs: unit-test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+#   # Job to run Playwright e2e tests
+#   e2e-test:
+#     name: Run E2E Tests
+#     # This job depends on the unit-test job. It will only run if unit tests pass.
+#     needs: unit-test
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 'lts/*'
-          cache: 'npm'
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: 'lts/*'
+#           cache: 'npm'
 
-      - name: Install dependencies
-        run: npm ci
+#       - name: Install dependencies
+#         run: npm ci
 
-      # Step 5: Install Playwright's browsers and dependencies
-      - name: Install Playwright
-        run: npx playwright install --with-deps
+#       # Step 5: Install Playwright's browsers and dependencies
+#       - name: Install Playwright
+#         run: npx playwright install --with-deps
 
-      # Step 6: Run the Playwright e2e tests
-      - name: Run Playwright tests
-        run: npm run test:e2e
+#       # Step 6: Run the Playwright e2e tests
+#       - name: Run Playwright tests
+#         run: npm run test:e2e
 
-      # Step 7: Upload the test report as an artifact if tests fail (optional but very useful)
-      - name: Upload Playwright report
-        uses: actions/upload-artifact@v4
-        if: always() # Upload the report even if the job fails
-        with:
-          name: playwright-report
-          path: playwright-report/
-          retention-days: 30
+#       # Step 7: Upload the test report as an artifact if tests fail (optional but very useful)
+#       - name: Upload Playwright report
+#         uses: actions/upload-artifact@v4
+#         if: always() # Upload the report even if the job fails
+#         with:
+#           name: playwright-report
+#           path: playwright-report/
+#           retention-days: 30

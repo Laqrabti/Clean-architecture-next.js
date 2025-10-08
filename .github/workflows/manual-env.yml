@@ -1,27 +1,27 @@
-name: Manual Env Demo
+# name: Manual Env Demo
 
-on:
-  workflow_dispatch:
-    inputs:
-      environment:
-        description: "Select environment"
-        required: true
-        type: choice
-        options:
-          - dev
-          - staging
-          - prod
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       environment:
+#         description: "Select environment"
+#         required: true
+#         type: choice
+#         options:
+#           - dev
+#           - staging
+#           - prod
 
-jobs:
-  demo:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Show chosen input (workflow expression)
-        run: |
-            echo "Selected (expression): ${{ github.event.inputs.environment }}"
+# jobs:
+#   demo:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Show chosen input (workflow expression)
+#         run: |
+#             echo "Selected (expression): ${{ github.event.inputs.environment }}"
 
-      - name: Show chosen input (env var & event name)
-        run: |
-          echo "GITHUB_EVENT_NAME=$GITHUB_EVENT_NAME"
-          echo "INPUT_ENVIRONMENT=$INPUT_ENVIRONMENT"
-          echo "Selected (env var): $INPUT_ENVIRONMENT"
+#       - name: Show chosen input (env var & event name)
+#         run: |
+#           echo "GITHUB_EVENT_NAME=$GITHUB_EVENT_NAME"
+#           echo "INPUT_ENVIRONMENT=$INPUT_ENVIRONMENT"
+#           echo "Selected (env var): $INPUT_ENVIRONMENT"

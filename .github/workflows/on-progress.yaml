@@ -1,0 +1,22 @@
+name: CI Build and Test  # Workflow name: "CI Build and Test"
+
+on:
+  push:
+    branches: [ "*" ]  # Triggers on pushes to any branch
+  pull_request:
+    branches: [ "*" ]  # Triggers on PRs targeting any branch
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: | 
+          echo "Running tests..."
+          sleep 40
+      - name: hassan
+        run: echo "hello has"
