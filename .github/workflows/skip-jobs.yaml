@@ -34,6 +34,12 @@ jobs:
             backend:
               - '*.py'
               - '*.java'
+            - name: Debug outputs
+      - run: |
+             echo "docs: ${{ steps.filter.outputs.docs }}"
+             echo "frontend: ${{ steps.filter.outputs.frontend }}"
+             echo "backend: ${{ steps.filter.outputs.backend }}"
+           
 
   # 2. Run if frontend code changed
   frontend-tests:
