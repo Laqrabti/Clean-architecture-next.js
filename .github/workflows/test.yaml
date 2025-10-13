@@ -1,0 +1,26 @@
+name: new-ci
+
+on:
+  push:
+    branches: ["feature/branch"]
+  pull_request:
+    branches: ["feature/branch"]
+
+
+jobs:
+    install-and-test:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - name: Use Node
+              uses: actions/setup-node@v4
+              with: 
+                  node-version: 20
+            - name: install
+              run: npm ci
+            - name: Lint 
+              run: npm run lint 
+            - name: Run unit test
+              run: npm run test
+
+
