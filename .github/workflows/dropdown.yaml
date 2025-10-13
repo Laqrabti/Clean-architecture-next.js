@@ -1,35 +1,35 @@
-name: Test Workflow Dispatch
+# name: Test Workflow Dispatch
 
-on:
-  workflow_dispatch:
-    inputs:
-      run_unit_tests:
-        description: 'Run unit tests only'
-        type: boolean
-        default: true
-      environment:
-        description: 'Select environment'
-        required: true
-        default: 'staging'
-        type: choice
-        options:
-        - staging
-        - production
-      debug_mode:
-        description: 'Enable debug output'
-        type: boolean
-        default: false
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       run_unit_tests:
+#         description: 'Run unit tests only'
+#         type: boolean
+#         default: true
+#       environment:
+#         description: 'Select environment'
+#         required: true
+#         default: 'staging'
+#         type: choice
+#         options:
+#         - staging
+#         - production
+#       debug_mode:
+#         description: 'Enable debug output'
+#         type: boolean
+#         default: false
 
-jobs:
-  unit-tests:
-    if: ${{ github.event.inputs.run_unit_tests }}
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Running unit tests for ${{ github.event.inputs.environment }}"
-      - run: echo "Debug mode is ${{ github.event.inputs.debug_mode }}"
+# jobs:
+#   unit-tests:
+#     if: ${{ github.event.inputs.run_unit_tests }}
+#     runs-on: ubuntu-latest
+#     steps:
+#       - run: echo "Running unit tests for ${{ github.event.inputs.environment }}"
+#       - run: echo "Debug mode is ${{ github.event.inputs.debug_mode }}"
 
-  other-job:
-    if: ${{ !github.event.inputs.run_unit_tests }}
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Skipping unit tests, doing other work"
+#   other-job:
+#     if: ${{ !github.event.inputs.run_unit_tests }}
+#     runs-on: ubuntu-latest
+#     steps:
+#       - run: echo "Skipping unit tests, doing other work"

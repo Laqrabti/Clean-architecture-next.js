@@ -1,0 +1,144 @@
+# name: Smart Next.js Pipeline
+
+# on:
+#   push:
+#     branches: [ main, developement ]
+#   pull_request:
+#     branches: [ main ]
+
+# jobs:
+#   # Job to detect what files changed
+#   detect-changes:
+#     runs-on: ubuntu-latest
+#     outputs:
+#       frontend: ${{ steps.filter.outputs.frontend }}
+#       backend: ${{ steps.filter.outputs.backend }}
+#       infrastructure: ${{ steps.filter.outputs.infrastructure }}
+#       tests: ${{ steps.filter.outputs.tests }}
+#       documentation: ${{ steps.filter.outputs.documentation }}
+#     steps:
+#     - uses: actions/checkout@v4
+#       with:
+#         fetch-depth: 0  # Required for proper git history comparison
+    
+#     - name: Detect changed paths
+#       uses: dorny/paths-filter@v3
+#       id: filter
+#       with:
+#         filters: |
+#           frontend:
+#             - 'app/**'
+#             - 'components/**'
+#             - '*.css'
+#             - 'next.config.ts'
+#             - 'package.json'
+#           backend:
+#             - 'src/**'
+#             - 'api/**'
+#           infrastructure:
+#             - 'ansible/**'
+#             - 'terraform/**'
+#             - 'docker-compose.yml'
+#             - 'Dockerfile'
+#           tests:
+#             - '__tests__/**'
+#             - 'tests/**'
+#             - 'playwright.config.ts'
+#             - 'vitest.config.js'
+#           documentation:
+#             - '*.md'
+#             - 'docs/**'
+#             - 'README.md'
+
+#   # Frontend build and tests (only runs if frontend files changed)
+#   frontend-job:
+#     needs: detect-changes
+#     if: needs.detect-changes.outputs.frontend == 'true'
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@v4
+    
+#     - name: Setup Node.js
+#       uses: actions/setup-node@v4
+#       with:
+#         node-version: '18'
+#         cache: 'npm'
+    
+#     - name: Install dependencies
+#       run: npm ci
+    
+#     - name: Run frontend tests
+#       run: npm test
+    
+#     - name: Build Next.js app
+#       run: npm run build
+    
+#     - name: Run Playwright tests
+#       run: npx playwright test
+
+#   # Backend tests (only runs if backend files changed)
+#   backend-job:
+#     needs: detect-changes
+#     if: needs.detect-changes.outputs.backend == 'true'
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@v4
+    
+#     - name: Setup Node.js
+#       uses: actions/setup-node@v4
+#       with:
+#         node-version: '18'
+#         cache: 'npm'
+    
+#     - name: Install dependencies
+#       run: npm ci
+    
+#     - name: Run backend tests
+#       run: |
+#         npm test
+#         npx vitest run src/
+
+#   # Infrastructure validation (only runs if infrastructure files changed)
+#   infrastructure-job:
+#     needs: detect-changes
+#     if: needs.detect-changes.outputs.infrastructure == 'true'
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@v4
+    
+#     - name: Validate Terraform
+#       run: |
+#         cd terraform
+#         terraform init -backend=false
+#         terraform validate
+    
+#     - name: Validate Ansible
+#       run: |
+#         cd ansible
+#         ansible-lint playbooks/
+
+#   # Documentation check (only runs if documentation files changed)
+#   docs-job:
+#     needs: detect-changes
+#     if: needs.detect-changes.outputs.documentation == 'true'
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@v4
+    
+#     - name: Check markdown links
+#       run: |
+#         npx markdown-link-check *.md
+
+#   # Final job that runs regardless of skipped jobs
+#   summary:
+#     needs: [detect-changes, frontend-job, backend-job, infrastructure-job, docs-job]
+#     runs-on: ubuntu-latest
+#     if: always()
+#     steps:
+#     - name: Workflow summary
+#       run: |
+#         echo "Pipeline execution completed"
+#         echo "Frontend changes: ${{ needs.detect-changes.outputs.frontend }}"
+#         echo "Backend changes: ${{ needs.detect-changes.outputs.backend }}"
+#         echo "Infrastructure changes: ${{ needs.detect-changes.outputs.infrastructure }}"
+#         echo "Documentation changes: ${{ needs.detect-changes.outputs.documentation }}"

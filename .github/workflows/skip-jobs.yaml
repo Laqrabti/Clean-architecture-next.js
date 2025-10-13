@@ -1,0 +1,85 @@
+name: Smart Pipeline
+on: 
+    push: 
+        branches: [main, pair-extra]
+    pull_request:
+        branches: [main, pair-extra]
+        
+jobs:
+  # 1. FIRST - Analyze what changed
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      docs: ${{ steps.filter.outputs.docs }}
+      frontend: ${{ steps.filter.outputs.frontend }}
+      backend: ${{ steps.filter.outputs.backend }}
+      config: ${{ steps.filter.outputs.config }}
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Detect what changed
+      id: filter
+      uses: dorny/paths-filter@v2
+      with:
+        filters: |
+          docs:
+            - 'docs/**'
+            - '*.md'
+          frontend:
+            - 'frontend/**'
+            - 'src/components/**'
+            - '*.js'
+            - '*.jsx'
+            - '*.ts'
+            - '*.tsx'
+          backend:
+            - 'backend/**'
+            - 'server/**'
+            - '*.py'
+            - '*.java'
+          config:
+            - '.github/**'
+            - '*.json'
+            - '*.yml'
+            - '*.yaml'
+
+  # 2. ONLY run if frontend code changed
+  frontend-tests:
+    runs-on: ubuntu-latest
+    needs: changes
+    if: needs.changes.outputs.frontend == 'true'
+    steps:
+      - name: Run frontend tests
+        run: echo "Running expensive frontend tests..."
+
+  # 3. ONLY run if backend code changed  
+  backend-tests:
+    runs-on: ubuntu-latest
+    needs: changes
+    if: needs.changes.outputs.backend == 'true'
+    steps:
+      - name: Run backend tests
+        run: echo "Running expensive backend tests..."
+
+  # 4. SKIP if only docs/config changed
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    needs: changes
+    if: |
+      needs.changes.outputs.frontend == 'true' ||
+      needs.changes.outputs.backend == 'true'
+    steps:
+      - name: Build project
+        run: echo "Building the entire project..."
+      
+      - name: Deploy
+        run: echo "Deploying to environment..."
+
+  # 5. ONLY run for documentation changes
+  docs-check:
+    runs-on: ubuntu-latest
+    needs: changes
+    if: needs.changes.outputs.docs == 'true'
+    steps:
+      - name: Check links
+        run: echo "Quick documentation validation"
