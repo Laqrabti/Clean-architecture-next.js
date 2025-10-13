@@ -1,12 +1,12 @@
 name: Smart Pipeline
-on: 
-    push: 
-        branches: [main, pair-extra]
-    pull_request:
-        branches: [main, pair-extra]
-        
+on:
+  push:
+    branches: [main, pair-extra, feature/*] # Added feature/* to include feature/read.md
+  pull_request:
+    branches: [main, pair-extra, feature/*]
+
 jobs:
-  # 1. FIRST - Analyze what changed
+  # 1. Analyze what changed
   changes:
     runs-on: ubuntu-latest
     outputs:
@@ -15,71 +15,72 @@ jobs:
       backend: ${{ steps.filter.outputs.backend }}
       config: ${{ steps.filter.outputs.config }}
     steps:
-    - uses: actions/checkout@v4
-    
-    - name: Detect what changed
-      id: filter
-      uses: dorny/paths-filter@v2
-      with:
-        filters: |
-          docs:
-            - 'docs/**'
-            - '*.md'
-          frontend:
-            - 'frontend/**'
-            - 'src/components/**'
-            - '*.js'
-            - '*.jsx'
-            - '*.ts'
-            - '*.tsx'
-          backend:
-            - 'backend/**'
-            - 'server/**'
-            - '*.py'
-            - '*.java'
-          config:
-            - '.github/**'
-            - '*.json'
-            - '*.yml'
-            - '*.yaml'
+      - uses: actions/checkout@v4
+      - name: Detect what changed
+        id: filter
+        uses: dorny/paths-filter@v2
+        with:
+          filters: |
+            docs:
+              - 'readme.md' # Specific to readme.md
+              - 'README.md'
+              - 'docs/**'
+            frontend:
+              - 'frontend/**'
+              - 'src/components/**'
+              - '*.js'
+              - '*.jsx'
+              - '*.ts'
+              - '*.tsx'
+            backend:
+              - 'backend/**'
+              - 'server/**'
+              - '*.py'
+              - '*.java'
+            config:
+              - '.github/**'
+              - '*.json'
+              - '*.yml'
+              - '*.yaml'
 
-  # 2. ONLY run if frontend code changed
+  # 2. Run if frontend code changed
   frontend-tests:
     runs-on: ubuntu-latest
     needs: changes
     if: needs.changes.outputs.frontend == 'true'
     steps:
+      - uses: actions/checkout@v4
       - name: Run frontend tests
-        run: echo "Running expensive frontend tests..."
+        run: echo "Running expensive frontend tests..." # Replace with actual test command
 
-  # 3. ONLY run if backend code changed  
+  # 3. Run if backend code changed
   backend-tests:
     runs-on: ubuntu-latest
     needs: changes
     if: needs.changes.outputs.backend == 'true'
     steps:
+      - uses: actions/checkout@v4
       - name: Run backend tests
-        run: echo "Running expensive backend tests..."
+        run: echo "Running expensive backend tests..." # Replace with actual test command
 
-  # 4. SKIP if only docs/config changed
+  # 4. Run if frontend or backend changed
   build-and-deploy:
     runs-on: ubuntu-latest
     needs: changes
-    if: |
-      needs.changes.outputs.frontend == 'true' ||
-      needs.changes.outputs.backend == 'true'
+    if: needs.changes.outputs.frontend == 'true' || needs.changes.outputs.backend == 'true'
     steps:
+      - uses: actions/checkout@v4
       - name: Build project
-        run: echo "Building the entire project..."
-      
+        run: echo "Building the entire project..." # Replace with actual build command
       - name: Deploy
-        run: echo "Deploying to environment..."
+        run: echo "Deploying to environment..." # Replace with actual deploy command
 
-  # 5. ONLY run for documentation changes
+  # 5. Run for documentation changes
   docs-check:
     runs-on: ubuntu-latest
     needs: changes
     if: needs.changes.outputs.docs == 'true'
     steps:
+      - uses: actions/checkout@v4
       - name: Check links
-        run: echo "Quick documentation validation"
+        run: echo "Quick documentation validation" # Replace with actual validation command
