@@ -25,6 +25,7 @@ jobs:
               - 'readme.md' # Specific to readme.md
               - 'README.md'
               - 'docs/**'
+              - '.github/workflows/**' 
             frontend:
               - 'frontend/**'
               - 'src/components/**'
@@ -33,15 +34,11 @@ jobs:
               - '*.ts'
               - '*.tsx'
             backend:
-              - 'backend/**'
-              - 'server/**'
               - '*.py'
               - '*.java'
             config:
-              - '.github/**'
               - '*.json'
-              - '*.yml'
-              - '*.yaml'
+
 
   # 2. Run if frontend code changed
   frontend-tests:
