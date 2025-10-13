@@ -1,9 +1,9 @@
 name: Smart Pipeline
 on:
   push:
-    branches: [main, pair-extra, feature/*] # Added feature/* to include feature/read.md
+    branches: [main, feature/read.md, feature/*] # Added feature/* to include feature/read.md
   pull_request:
-    branches: [main, pair-extra, feature/*]
+    branches: [main, feature/read.md, feature/*]
 
 jobs:
   # 1. Analyze what changed
@@ -13,7 +13,6 @@ jobs:
       docs: ${{ steps.filter.outputs.docs }}
       frontend: ${{ steps.filter.outputs.frontend }}
       backend: ${{ steps.filter.outputs.backend }}
-      config: ${{ steps.filter.outputs.config }}
     steps:
       - uses: actions/checkout@v4
       - name: Detect what changed
@@ -22,12 +21,11 @@ jobs:
         with:
           filters: |
             docs:
-              - 'readme.md' # Specific to readme.md
+              - 'readme.md' 
               - 'README.md'
               - 'docs/**'
               - '.github/workflows/**' 
             frontend:
-              - 'frontend/**'
               - 'src/components/**'
               - '*.js'
               - '*.jsx'
@@ -36,9 +34,6 @@ jobs:
             backend:
               - '*.py'
               - '*.java'
-            config:
-              - '*.json'
-
 
   # 2. Run if frontend code changed
   frontend-tests:
