@@ -1,0 +1,10 @@
+/Users/laqrabtihassan/Clean-Architecture-next.js/study/rust/target/debug/deps/actix_codec-d4e096d515a0c76f.d: /Users/laqrabtihassan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/actix-codec-0.5.2/src/lib.rs /Users/laqrabtihassan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/actix-codec-0.5.2/src/bcodec.rs /Users/laqrabtihassan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/actix-codec-0.5.2/src/framed.rs /Users/laqrabtihassan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/actix-codec-0.5.2/src/lines.rs
+
+/Users/laqrabtihassan/Clean-Architecture-next.js/study/rust/target/debug/deps/libactix_codec-d4e096d515a0c76f.rlib: /Users/laqrabtihassan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/actix-codec-0.5.2/src/lib.rs /Users/laqrabtihassan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/actix-codec-0.5.2/src/bcodec.rs /Users/laqrabtihassan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/actix-codec-0.5.2/src/framed.rs /Users/laqrabtihassan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/actix-codec-0.5.2/src/lines.rs
+
+/Users/laqrabtihassan/Clean-Architecture-next.js/study/rust/target/debug/deps/libactix_codec-d4e096d515a0c76f.rmeta: /Users/laqrabtihassan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/actix-codec-0.5.2/src/lib.rs /Users/laqrabtihassan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/actix-codec-0.5.2/src/bcodec.rs /Users/laqrabtihassan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/actix-codec-0.5.2/src/framed.rs /Users/laqrabtihassan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/actix-codec-0.5.2/src/lines.rs
+
+/Users/laqrabtihassan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/actix-codec-0.5.2/src/lib.rs:
+/Users/laqrabtihassan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/actix-codec-0.5.2/src/bcodec.rs:
+/Users/laqrabtihassan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/actix-codec-0.5.2/src/framed.rs:
+/Users/laqrabtihassan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/actix-codec-0.5.2/src/lines.rs:

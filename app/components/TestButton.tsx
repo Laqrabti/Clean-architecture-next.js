@@ -1,5 +1,7 @@
 // app/components/TestButton.tsx
-"use client"
+"use client";
+import React from 'react';
+
 export default function TestButton() {
   return (
     <div className="p-8">
