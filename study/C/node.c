@@ -1,121 +1,121 @@
-// #include <stdio.h>
-// #include <stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-// struct Node {
-//     int data;
-//     struct Node* next;
-// };
+struct Node {
+    int data;
+    struct Node* next;
+};
 
-// int main() {
-//     // // Create first node
-//     // struct Node* head = malloc(sizeof(struct Node));
-//     // head->data = 10;
+int main() {
+    // Create first node
+    struct Node* head = malloc(sizeof(struct Node));
+    head->data = 10;
     
-//     // // Create second node  
-//     // struct Node* second = malloc(sizeof(struct Node));
-//     // second->data = 20;
+    // Create second node  
+    struct Node* second = malloc(sizeof(struct Node));
+    second->data = 20;
     
-//     // // Create third node
-//     // struct Node* third = malloc(sizeof(struct Node));
-//     // third->data = 30;
+    // Create third node
+    struct Node* third = malloc(sizeof(struct Node));
+    third->data = 30;
     
-//     // // LINK THEM TOGETHER:
-//     // head->next = second;   // head points to second
-//     // second->next = third;  // second points to third  
-//     // third->next = NULL;    // third points to nothing (end)
+    // LINK THEM TOGETHER:
+    head->next = second;   // head points to second
+    second->next = third;  // second points to third  
+    third->next = NULL;    // third points to nothing (end)
     
-//     // // Visual representation:
-//     // // head → [10|→] → [20|→] → [30|NULL]
+    // Visual representation:
+    // head → [10|→] → [20|→] → [30|NULL]
     
-//     // // Traverse the list:
-//     // struct Node* current = head;
-//     // while (current != NULL) {
-//     //     printf("%d → ", current->data);
-//     //     current = current->next;  // Move to next node
-//     // }
-//     // printf("NULL\n");
+    // Traverse the list:
+    struct Node* current = head;
+    while (current != NULL) {
+        printf("%d → ", current->data);
+        current = current->next;  // Move to next node
+    }
+    printf("NULL\n");
     
-//     // // Don't forget to free!
-//     // free(head);
-//     // free(second); 
-//     // free(third);
-
-
-
-
-    
-//     return 0;
-// }
+    // Don't forget to free!
+    free(head);
+    free(second); 
+    free(third);
 
 
 
 
-// // Global struct definition
-// struct Point {
-//     int x;
-//     int y;
-// };
+    
+    return 0;
+}
 
-// // Function that creates stack-allocated struct
-// void stackExample() {
-//     printf("=== STACK ALLOCATION EXAMPLE ===\n");
-    
-//     // Stack allocation - dies when function ends
-//     struct Point stackPoint = {5, 10};
-//     printf("Inside function - Stack point: (%d, %d)\n", stackPoint.x, stackPoint.y);
-//     printf("Memory address: %p\n", &stackPoint);
-    
-//     // This struct will be destroyed when function returns!
-// } // stackPoint dies here!
 
-// // Function that creates heap-allocated struct
-// struct Point* heapExample() {
-//     printf("\n=== HEAP ALLOCATION EXAMPLE ===\n");
-    
-//     // Heap allocation - lives until free() is called
-//     struct Point* heapPoint = malloc(sizeof(struct Point));
-//     heapPoint->x = 15;
-//     heapPoint->y = 20;
-    
-//     printf("Inside function - Heap point: (%d, %d)\n", heapPoint->x, heapPoint->y);
-//     printf("Memory address: %p\n", heapPoint);
-    
-//     return heapPoint;  // Can return pointer - memory persists!
-// }
 
-// // DANGEROUS: Returning pointer to stack memory
-// struct Point* dangerousExample() {
-//     struct Point localPoint = {25, 30};  // Stack allocation
-    
-//     printf("\n=== DANGEROUS EXAMPLE ===\n");
-//     printf("Local point: (%d, %d)\n", localPoint.x, localPoint.y);
-//     printf("Memory address: %p\n", &localPoint);
-    
-//     return &localPoint;  // BAD! Returning address of local variable
-// } // localPoint dies here, but we returned its address!
 
-// int main() {
-//     // Example 1: Stack allocation (dies when function ends)
-//     stackExample();
+// Global struct definition
+struct Point {
+    int x;
+    int y;
+};
+
+// Function that creates stack-allocated struct
+void stackExample() {
+    printf("=== STACK ALLOCATION EXAMPLE ===\n");
     
-//     // Can't access stackPoint here - it's already destroyed!
-//     // printf("%d", stackPoint.x);  // COMPILE ERROR!
+    // Stack allocation - dies when function ends
+    struct Point stackPoint = {5, 10};
+    printf("Inside function - Stack point: (%d, %d)\n", stackPoint.x, stackPoint.y);
+    printf("Memory address: %p\n", &stackPoint);
     
-//     // Example 2: Heap allocation (persists)
-//     struct Point* persistedPoint = heapExample();
-//     printf("After function - Persisted point: (%d, %d)\n", 
-//            persistedPoint->x, persistedPoint->y);
+    // This struct will be destroyed when function returns!
+} // stackPoint dies here!
+
+// Function that creates heap-allocated struct
+struct Point* heapExample() {
+    printf("\n=== HEAP ALLOCATION EXAMPLE ===\n");
     
-//     // Example 3: Dangerous stack return
-//     struct Point* dangerousPointer = dangerousExample();
-//     printf("After function - Dangerous point: (%d, %d)\n", 
-//            dangerousPointer->x, dangerousPointer->y);  // UNDEFINED BEHAVIOR!
+    // Heap allocation - lives until free() is called
+    struct Point* heapPoint = malloc(sizeof(struct Point));
+    heapPoint->x = 15;
+    heapPoint->y = 20;
     
-//     // Clean up heap memory
-//     free(persistedPoint);
+    printf("Inside function - Heap point: (%d, %d)\n", heapPoint->x, heapPoint->y);
+    printf("Memory address: %p\n", heapPoint);
     
-//     return 0;
-// }
+    return heapPoint;  // Can return pointer - memory persists!
+}
+
+// DANGEROUS: Returning pointer to stack memory
+struct Point* dangerousExample() {
+    struct Point localPoint = {25, 30};  // Stack allocation
+    
+    printf("\n=== DANGEROUS EXAMPLE ===\n");
+    printf("Local point: (%d, %d)\n", localPoint.x, localPoint.y);
+    printf("Memory address: %p\n", &localPoint);
+    
+    return &localPoint;  // BAD! Returning address of local variable
+} // localPoint dies here, but we returned its address!
+
+int main() {
+    // Example 1: Stack allocation (dies when function ends)
+    stackExample();
+    
+    // Can't access stackPoint here - it's already destroyed!
+    // printf("%d", stackPoint.x);  // COMPILE ERROR!
+    
+    // Example 2: Heap allocation (persists)
+    struct Point* persistedPoint = heapExample();
+    printf("After function - Persisted point: (%d, %d)\n", 
+           persistedPoint->x, persistedPoint->y);
+    
+    // Example 3: Dangerous stack return
+    struct Point* dangerousPointer = dangerousExample();
+    printf("After function - Dangerous point: (%d, %d)\n", 
+           dangerousPointer->x, dangerousPointer->y);  // UNDEFINED BEHAVIOR!
+    
+    // Clean up heap memory
+    free(persistedPoint);
+    
+    return 0;
+}
 
 
 #include <stdio.h>
@@ -183,7 +183,7 @@ int main() {
     // Stack-allocated variables for temporary use
     int width = 1920;  // Full HD
     int height = 1080;
-    
+
     // Create image on heap
     Image *img = create_image(width, height);
     if (!img) {
