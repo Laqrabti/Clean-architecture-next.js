@@ -77,13 +77,14 @@
 #include <stdlib.h>
 #include<string.h>
 
-struct BadStruct {
+typedef struct BadStruct {
     int id;  // Flexible array NOT last
     int age;  
     char name[];    // This will be OVERWRITTEN
-};
+} Bad2;
 
 int main() {
+
     // Allocate space for struct + 10 chars for name
     struct BadStruct *p = malloc(sizeof(struct BadStruct) + 10);
     
