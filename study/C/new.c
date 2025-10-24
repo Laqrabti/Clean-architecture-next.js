@@ -1,42 +1,102 @@
-#include<stdlib.h>
-#include<stdio.h>
-#include<string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main(int argc, char *argv[]) {
+
+    char* words[] = {"hello", "world", "code"};
+
+    // for (int i=0; i < 3; i++) {
+    //     printf("%s\n", words[i++]);
+    // }
+
+    for (char **p = words; p < words + 3; p++) {
+        printf("%s\n", *p);  // *p dereferences to the real string (array of char)
+    }
 
 
-typedef struct Products {
-    int id;
-    char* name;
-} Pr;
-
-// Pr* fill_data(int id, const char* new_name) {
-//     Pr* prd_instance = malloc(sizeof(Pr));
-//     prd_instance->id = id;
-//     prd_instance->name = malloc(sizeof(*new_name));
-//     return prd_instance;
-// }
-
-int main(void) {
-
-    // char FirstName[20] = "Laqrabti ";
-    // char LastName[] = "Hassan";
-    // printf("memory address of the first name %p\n", FirstName);
-    // printf("first name is: %s", FirstName);
-
-    // char* Result = strcat(FirstName, LastName);
-    // printf("Fulls name is %s\n", Result);
-
-    int x = 4;
-    int* ptr1 = &x;
-    int** ptr2 = &ptr1;
-
-    printf("Memory address of pointer1 ptr1: %p\n", ptr1);
-    printf("Memory address of pointer2: ptr2: %p\n", ptr2);
-    printf("dereferencing ptr2:%p\n", *ptr2);
-    printf("Getting the value of x by dereferencing the ptr2 twice: %d\n", **ptr2);
 
 
+    // // Check if correct number of arguments provided
+    // if (argc != 4) {
+    //     printf("Usage: %s <number> <operator> <number>\n", argv[0]);
+    //     printf("Example: %s 5 + 3\n", argv[0]);
+    //     return 1;
+    // }
+    
+    // // Parse arguments
+    // double num1 = atof(argv[1]);
+    // char operator = argv[2][0];  // First character of 2nd argument
+    // double num2 = atof(argv[3]);
+    // double result;
+    
+    // // Perform calculation based on operator
+    // switch (operator) {
+    //     case '+':
+    //         result = num1 + num2;
+    //         break;
+    //     case '-':
+    //         result = num1 - num2;
+    //         break;
+    //     case '*':
+    //         result = num1 * num2;
+    //         break;
+    //     case '/':
+    //         if (num2 == 0) {
+    //             printf("Error: Division by zero!\n");
+    //             return 1;
+    //         }
+    //         result = num1 / num2;
+    //         break;
+    //     default:
+    //         printf("Error: Invalid operator '%c'\n", operator);
+    //         return 1;
+    // }
+    
+    // printf("Result: %.2f %c %.2f = %.2f\n", num1, operator, num2, result);
     return 0;
 }
+
+
+// #include<stdlib.h>
+// #include<stdio.h>
+// #include<string.h>
+
+
+// typedef struct Products {
+//     int id;
+//     char* name;
+// } Pr;
+
+// // Pr* fill_data(int id, const char* new_name) {
+// //     Pr* prd_instance = malloc(sizeof(Pr));
+// //     prd_instance->id = id;
+// //     prd_instance->name = malloc(sizeof(*new_name));
+// //     return prd_instance;
+// // }
+
+// int main(void) {
+
+//     // char FirstName[20] = "Laqrabti ";
+//     // char LastName[] = "Hassan";
+//     // printf("memory address of the first name %p\n", FirstName);
+//     // printf("first name is: %s", FirstName);
+
+//     // char* Result = strcat(FirstName, LastName);
+//     // printf("Fulls name is %s\n", Result);
+
+//     int x = 4;
+//     int* ptr1 = &x;
+//     int** ptr2 = &ptr1;
+
+//     printf("Memory address of pointer1 ptr1: %p\n", ptr1);
+//     printf("Memory address of pointer2: ptr2: %p\n", ptr2);
+//     printf("dereferencing ptr2:%p\n", *ptr2);
+//     printf("Getting the value of x by dereferencing the ptr2 twice: %d\n", **ptr2);
+
+
+//     return 0;
+// }
 
 
 
