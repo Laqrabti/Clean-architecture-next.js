@@ -1,3 +1,57 @@
+#include<stdlib.h>
+#include<stdio.h>
+#include<string.h>
+
+
+typedef struct Products {
+    int id;
+    char* name;
+} Pr;
+
+// Pr* fill_data(int id, const char* new_name) {
+//     Pr* prd_instance = malloc(sizeof(Pr));
+//     prd_instance->id = id;
+//     prd_instance->name = malloc(sizeof(*new_name));
+//     return prd_instance;
+// }
+
+int main(void) {
+
+    // char FirstName[20] = "Laqrabti ";
+    // char LastName[] = "Hassan";
+    // printf("memory address of the first name %p\n", FirstName);
+    // printf("first name is: %s", FirstName);
+
+    // char* Result = strcat(FirstName, LastName);
+    // printf("Fulls name is %s\n", Result);
+
+    int x = 4;
+    int* ptr1 = &x;
+    int** ptr2 = &ptr1;
+
+    printf("Memory address of pointer1 ptr1: %p\n", ptr1);
+    printf("Memory address of pointer2: ptr2: %p\n", ptr2);
+    printf("dereferencing ptr2:%p\n", *ptr2);
+    printf("Getting the value of x by dereferencing the ptr2 twice: %d\n", **ptr2);
+
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // #include<stdlib.h>
 // #include<stdio.h>
@@ -26,124 +80,124 @@
 
 
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+// #include <stdio.h>
+// #include <stdlib.h>
+// #include <string.h>
 
-#define TABLE_SIZE 10
+// #define TABLE_SIZE 10
 
-struct hash_node {
-    char *key;
-    char *value;
-    struct hash_node *next;
-};
+// struct hash_node {
+//     char *key;
+//     char *value;
+//     struct hash_node *next;
+// };
 
-struct hash_table {
-    struct hash_node *buckets[TABLE_SIZE];
-};
+// struct hash_table {
+//     struct hash_node *buckets[TABLE_SIZE];
+// };
 
-/* simple strdup replacement (portable) */
-char *my_strdup(const char *s) {
-    if (!s) return NULL;
-    size_t n = strlen(s) + 1;
-    char *p = malloc(n);
-    if (p) memcpy(p, s, n);
-    return p;
-}
+// /* simple strdup replacement (portable) */
+// char *my_strdup(const char *s) {
+//     if (!s) return NULL;
+//     size_t n = strlen(s) + 1;
+//     char *p = malloc(n);
+//     if (p) memcpy(p, s, n);
+//     return p;
+// }
 
-/* simple hash: length mod TABLE_SIZE (demo only) */
-unsigned int hash_idx(const char *key) {
-    return (unsigned int)(strlen(key)) % TABLE_SIZE;
-}
+// /* simple hash: length mod TABLE_SIZE (demo only) */
+// unsigned int hash_idx(const char *key) {
+//     return (unsigned int)(strlen(key)) % TABLE_SIZE;
+// }
 
-/* create node: duplicates key and value */
-struct hash_node *create_node(const char *key, const char *value) {
-    struct hash_node *n = malloc(sizeof *n);
-    if (!n) return NULL;
-    n->key = my_strdup(key);
-    n->value = my_strdup(value);
-    n->next = NULL;
-    if ((n->key == NULL) || (n->value == NULL)) { /* allocation failure cleanup */
-        free(n->key); free(n->value); free(n); return NULL;
-    }
-    return n;
-}
+// /* create node: duplicates key and value */
+// struct hash_node *create_node(const char *key, const char *value) {
+//     struct hash_node *n = malloc(sizeof *n);
+//     if (!n) return NULL;
+//     n->key = my_strdup(key);
+//     n->value = my_strdup(value);
+//     n->next = NULL;
+//     if ((n->key == NULL) || (n->value == NULL)) { /* allocation failure cleanup */
+//         free(n->key); free(n->value); free(n); return NULL;
+//     }
+//     return n;
+// }
 
-/* append at tail: allows duplicate keys as separate nodes */
-int insert_append(struct hash_table *ht, const char *key, const char *value) {
-    unsigned int idx = hash_idx(key);
-    struct hash_node *node = create_node(key, value);
-    if (!node) return -1;
-    if (ht->buckets[idx] == NULL) {
-        ht->buckets[idx] = node;
-        return 0;
-    }
-    struct hash_node *cur = ht->buckets[idx];
-    while (cur->next) cur = cur->next;
-    cur->next = node;
-    return 0;
-}
+// /* append at tail: allows duplicate keys as separate nodes */
+// int insert_append(struct hash_table *ht, const char *key, const char *value) {
+//     unsigned int idx = hash_idx(key);
+//     struct hash_node *node = create_node(key, value);
+//     if (!node) return -1;
+//     if (ht->buckets[idx] == NULL) {
+//         ht->buckets[idx] = node;
+//         return 0;
+//     }
+//     struct hash_node *cur = ht->buckets[idx];
+//     while (cur->next) cur = cur->next;
+//     cur->next = node;
+//     return 0;
+// }
 
-/* lookup: returns first matching value (first-inserted for append policy) */
-char *lookup_first(struct hash_table *ht, const char *key) {
-    unsigned int idx = hash_idx(key);
-    struct hash_node *cur = ht->buckets[idx];
-    while (cur) {
-        if (strcmp(cur->key, key) == 0) return cur->value;
-        cur = cur->next;
-    }
-    return NULL;
-}
+// /* lookup: returns first matching value (first-inserted for append policy) */
+// char *lookup_first(struct hash_table *ht, const char *key) {
+//     unsigned int idx = hash_idx(key);
+//     struct hash_node *cur = ht->buckets[idx];
+//     while (cur) {
+//         if (strcmp(cur->key, key) == 0) return cur->value;
+//         cur = cur->next;
+//     }
+//     return NULL;
+// }
 
-/* debug: print all buckets */
-void print_all(struct hash_table *ht) {
-    for (int i = 0; i < TABLE_SIZE; ++i) {
-        printf("Bucket[%d]: ", i);
-        struct hash_node *cur = ht->buckets[i];
-        while (cur) {
-            printf("[%s=%s] -> ", cur->key, cur->value);
-            cur = cur->next;
-        }
-        printf("NULL\n");
-    }
-}
+// /* debug: print all buckets */
+// void print_all(struct hash_table *ht) {
+//     for (int i = 0; i < TABLE_SIZE; ++i) {
+//         printf("Bucket[%d]: ", i);
+//         struct hash_node *cur = ht->buckets[i];
+//         while (cur) {
+//             printf("[%s=%s] -> ", cur->key, cur->value);
+//             cur = cur->next;
+//         }
+//         printf("NULL\n");
+//     }
+// }
 
-/* free everything */
-void destroy_table(struct hash_table *ht) {
-    for (int i = 0; i < TABLE_SIZE; ++i) {
-        struct hash_node *cur = ht->buckets[i];
-        while (cur) {
-            struct hash_node *tmp = cur;
-            cur = cur->next;
-            free(tmp->key);
-            free(tmp->value);
-            free(tmp);
-        }
-        ht->buckets[i] = NULL;
-    }
-}
+// /* free everything */
+// void destroy_table(struct hash_table *ht) {
+//     for (int i = 0; i < TABLE_SIZE; ++i) {
+//         struct hash_node *cur = ht->buckets[i];
+//         while (cur) {
+//             struct hash_node *tmp = cur;
+//             cur = cur->next;
+//             free(tmp->key);
+//             free(tmp->value);
+//             free(tmp);
+//         }
+//         ht->buckets[i] = NULL;
+//     }
+// }
 
-int main(void) {
-    struct hash_table ht;
-    for (int i = 0; i < TABLE_SIZE; ++i) ht.buckets[i] = NULL;
+// int main(void) {
+//     struct hash_table ht;
+//     for (int i = 0; i < TABLE_SIZE; ++i) ht.buckets[i] = NULL;
 
-    /* Insert sample keys (including duplicate "hassan") */
-    insert_append(&ht, "bob",    "data_bob");
-    insert_append(&ht, "hassan", "data1");
-    insert_append(&ht, "saad",   "data_saad");
-    insert_append(&ht, "hassan", "data2"); /* duplicate key -> new node appended */
+//     /* Insert sample keys (including duplicate "hassan") */
+//     insert_append(&ht, "bob",    "data_bob");
+//     insert_append(&ht, "hassan", "data1");
+//     insert_append(&ht, "saad",   "data_saad");
+//     insert_append(&ht, "hassan", "data2"); /* duplicate key -> new node appended */
 
-    /* Print state */
-    printf("Hash table contents:\n");
-    print_all(&ht);
+//     /* Print state */
+//     printf("Hash table contents:\n");
+//     print_all(&ht);
 
-    /* Lookup - returns first matching value for "hassan" */
-    char *v = lookup_first(&ht, "hassan");
-    printf("\nlookup(\"hassan\") -> %s\n", v ? v : "(not found)");
+//     /* Lookup - returns first matching value for "hassan" */
+//     char *v = lookup_first(&ht, "hassan");
+//     printf("\nlookup(\"hassan\") -> %s\n", v ? v : "(not found)");
 
-    destroy_table(&ht);
-    return 0;
-}
+//     destroy_table(&ht);
+//     return 0;
+// }
 
 
 
