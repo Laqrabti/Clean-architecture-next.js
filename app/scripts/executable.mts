@@ -1,9 +1,6 @@
 // jwt‐example.ts
 import jwt from 'jsonwebtoken';
 
-
-
-
 // 1️⃣ Configuration (shared secret, options)
 const JWT_SECRET   = '1234';  
 const JWT_OPTIONS: jwt.SignOptions = { expiresIn: '1h' };       
@@ -85,7 +82,6 @@ export async function safeParse(userId: string) {
 
 const profile = await safeParse("3")
 console.log("Profile is", profile);
-
 
 
 async function handleRequestSimple(tenant: "A"|"B", userId: string) {

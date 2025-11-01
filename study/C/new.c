@@ -1,18 +1,97 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include<string.h>
+#include<stdlib.h>
+#include<stdio.h>
 
-int main(int argc, char *argv[]) {
+typedef struct {
+    int id;
+    char name[];
+} Family ;
 
-    char* words[] = {"hello", "world", "code"};
 
-    // for (int i=0; i < 3; i++) {
-    //     printf("%s\n", words[i++]);
+int main() {
+    size_t name_size = 50;
+    Family* family = (Family*)malloc(sizeof(Family) + name_size);
+    family->id = 2;
+    strncpy(family->name, "hassan laqrabti is a good person", name_size - 1);
+    family->name[name_size - 1] = '\0';  // Ensure null termination
+
+    printf("%c\n", family->name[name_size - 2]);
+
+  
+
+
+
+
+
+
+
+
+
+
+    // int length = strlen("hassan");
+
+    // char* str = "banana";
+    // size_t len = strlen(str); 
+    // str[1] = 'b';
+    // printf("%s\n", str);
+
+    // char* buffer = "banana";  // Stack memory
+    // buffer[2] = 'j';
+    // printf("%s\n", buffer);
+
+    // for (size_t i = 0; i < len; i++) {
+    //     if (str[i]  == 'a') {
+    //         printf("Found 'a' at index %zu\n", i);
+    //     }
     // }
 
-    for (char **p = words; p < words + 3; p++) {
-        printf("%s\n", *p);  // *p dereferences to the real string (array of char)
-    }
+
+//     puts("__________\n");
+//     char* name[] = {"hassan", "nazih", "mehdi"};
+//     // for (size_t i = 0; i < sizeof(name)/sizeof(name[0]); i++) {
+//     //     printf("the pointer is %p and the value it holds is %s\n", name[i], name[i]);
+//     // }
+    
+//     char** ptr = name;
+//     size_t count = sizeof(name) / sizeof(name[0]);
+//     for (size_t i = 0; i < count; i++ ){
+//         printf("%p and the content is: %s\n", (void*)(ptr + i), *(ptr + i));
+// }
+    
+    // puts("__________\n");
+    // char* str1 = "hello";
+    // printf("%p\n", str1);
+    // printf("%p\n", &str1[0]);
+    // printf("%c\n", str1[0]);
+    // printf("%s\n", str1);
+    // printf("%p\n", &str1 + 2);
+
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -54,8 +133,8 @@ int main(int argc, char *argv[]) {
     // }
     
     // printf("Result: %.2f %c %.2f = %.2f\n", num1, operator, num2, result);
-    return 0;
-}
+//     return 0;
+// }
 
 
 // #include<stdlib.h>
@@ -350,30 +429,30 @@ int main(int argc, char *argv[]) {
 
 
 
-//     // Allocate main struct
+    // Allocate main struct
 
 
-//     // Initialize dimensions
+    // Initialize dimensions
 
 
-//     // Allocate row pointers
+    // Allocate row pointers
 
 
-//     // Zero-initialize row pointers for safe cleanup
+    // Zero-initialize row pointers for safe cleanup
 
 
-//     // Allocate each row with single contiguous block for better cache performance
-
-
-
-//     // Set up row pointers to point into the contiguous block
-
-
-//     // Reference counting for shared ownership
+    // Allocate each row with single contiguous block for better cache performance
 
 
 
-//     // Processing functions - NO memory management inside
+    // Set up row pointers to point into the contiguous block
+
+
+    // Reference counting for shared ownership
+
+
+
+    // Processing functions - NO memory management inside
 // }
 
 
@@ -436,74 +515,74 @@ int main(int argc, char *argv[]) {
 
 
 
-// // #include<stdio.h>
-// // #include<stdlib.h>
-// // #include<limits.h>
+// #include<stdio.h>
+// #include<stdlib.h>
+// #include<limits.h>
 
-// // typedef struct {
-// //     int width;
-// //     int height;
-// //     unsigned char *pixels;
-// // } Image;
+// typedef struct {
+//     int width;
+//     int height;
+//     unsigned char *pixels;
+// } Image;
 
-// // Image* create_image(int width, int height) {
-// //     Image *image = malloc(sizeof(Image));
-// //     if (!image) {
-// //         fprintf(stderr, "Failed to allocate image struct\n");
-// //     }
-// //     image->height = height; 
-// //     image->width = width;
-// //     size_t size = height * width;
-// //     image->pixels = malloc(size * sizeof(unsigned char));
-// //     if (!image->pixels) {
-// //         fprintf(stderr, "Failed to allocate pixel data\n");
-// //     }
-// //     free(image); 
-// //     return NULL;
+// Image* create_image(int width, int height) {
+//     Image *image = malloc(sizeof(Image));
+//     if (!image) {
+//         fprintf(stderr, "Failed to allocate image struct\n");
+//     }
+//     image->height = height; 
+//     image->width = width;
+//     size_t size = height * width;
+//     image->pixels = malloc(size * sizeof(unsigned char));
+//     if (!image->pixels) {
+//         fprintf(stderr, "Failed to allocate pixel data\n");
+//     }
+//     free(image); 
+//     return NULL;
 
-// //     //Inizialize pixels to zero
+//     //Inizialize pixels to zero
 
-// // }
+// }
 
 
-// // int main(void) {
-// //     printf("sizeof(unsigned char) = %zu\n", sizeof(unsigned char));
-// //     printf("CHAR_BIT = %d\n", CHAR_BIT); // usually 8
+// int main(void) {
+//     printf("sizeof(unsigned char) = %zu\n", sizeof(unsigned char));
+//     printf("CHAR_BIT = %d\n", CHAR_BIT); // usually 8
 
-// //     int neg = -1;
-// //     size_t s = (size_t)neg; // converts -1 to very large unsigned value
-// //     printf("neg = %d, s = %zu\n", neg, s);
+//     int neg = -1;
+//     size_t s = (size_t)neg; // converts -1 to very large unsigned value
+//     printf("neg = %d, s = %zu\n", neg, s);
     
-// //     unsigned int a = 4000000000u; // ~4 billion, fits in 32-bit unsigned
-// //     unsigned int b = 4000000000u;
-// //     unsigned int s = a + b;       // wraps modulo 2^32
+//     unsigned int a = 4000000000u; // ~4 billion, fits in 32-bit unsigned
+//     unsigned int b = 4000000000u;
+//     unsigned int s = a + b;       // wraps modulo 2^32
 
-// //     printf("a = %u\n", a);
-// //     printf("b = %u\n", b);
-// //     printf("a + b (unsigned wrap) = %u\n", s);
-// //     printf("UINT_MAX = %u\n", UINT_MAX);
+//     printf("a = %u\n", a);
+//     printf("b = %u\n", b);
+//     printf("a + b (unsigned wrap) = %u\n", s);
+//     printf("UINT_MAX = %u\n", UINT_MAX);
 
-// //     // show mathematics: (a + b) mod 2^32
-// //     unsigned long long expected = (unsigned long long)a + (unsigned long long)b;
-// //     printf("Mathematical sum = %llu\n", expected);
-// //     printf("Wrapped result = %u (which equals mathematical sum mod 2^32)\n", s);
+//     // show mathematics: (a + b) mod 2^32
+//     unsigned long long expected = (unsigned long long)a + (unsigned long long)b;
+//     printf("Mathematical sum = %llu\n", expected);
+//     printf("Wrapped result = %u (which equals mathematical sum mod 2^32)\n", s);
 
-// //     uint32_t a = 4000000000u;
-// //     uint32_t b = 4000000000u;
-// //     uint32_t sum = a + b;                      // wraps modulo 2^32
-// //     unsigned long long math_sum = (unsigned long long)a + b; // full math
+//     uint32_t a = 4000000000u;
+//     uint32_t b = 4000000000u;
+//     uint32_t sum = a + b;                      // wraps modulo 2^32
+//     unsigned long long math_sum = (unsigned long long)a + b; // full math
 
-// //     printf("a + b (mathematical) = %llu\n", math_sum);
-// //     printf("a + b (uint32_t wrap)  = %u\n", sum); // equals math_sum % 2^32
+//     printf("a + b (mathematical) = %llu\n", math_sum);
+//     printf("a + b (uint32_t wrap)  = %u\n", sum); // equals math_sum % 2^32
 
-// //     printf("sizeof(short) = %zu\n", sizeof(short));
-// //     printf("sizeof(int)   = %zu\n", sizeof(int));
-// //     printf("sizeof(long)  = %zu\n", sizeof(long));
-// //     printf("sizeof(long long) = %zu\n", sizeof(long long));
-// //     printf("sizeof(void*) = %zu\n", sizeof(void*));
+//     printf("sizeof(short) = %zu\n", sizeof(short));
+//     printf("sizeof(int)   = %zu\n", sizeof(int));
+//     printf("sizeof(long)  = %zu\n", sizeof(long));
+//     printf("sizeof(long long) = %zu\n", sizeof(long long));
+//     printf("sizeof(void*) = %zu\n", sizeof(void*));
 
-// //     return 0;
-// // }
+//     return 0;
+// }
 
 
 // #include <stdio.h>
@@ -526,17 +605,17 @@ int main(int argc, char *argv[]) {
 
 
 
-// // bool Update_customer_purchases() {
+// bool Update_customer_purchases() {
 
-// // }
+// }
 
-// // Calculate_rewards() {
+// Calculate_rewards() {
 
-// // }
+// }
 
-// // Generate_reports() {
+// Generate_reports() {
     
-// // }
+// }
 
 
 
@@ -588,24 +667,24 @@ int main(int argc, char *argv[]) {
 
 // #define TABLE_SIZE 10
 
-// struct hash_node {
+// typedef struct {
 //     char *key;
 //     char *value;
 //     struct hash_node *next;
-// };
+// } hash_node;
 
-// struct hash_table {
-//     struct hash_node *buckets[TABLE_SIZE];
-// };
+// typedef struct  {
+//     hash_node *buckets[TABLE_SIZE];
+// } hash_table;
 
 // unsigned int hash(char *key) {
 //     return strlen(key) % TABLE_SIZE;  // Simple hash for demo
 // }
 
-// void insert(struct hash_table *ht, char *key, char *value) {
+// void insert(hash_table *ht, char *key, char *value) {
 //     unsigned int index = hash(key);
     
-//     struct hash_node *new_node = malloc(sizeof(struct hash_node));
+//     hash_node *new_node = malloc(sizeof(struct hash_node));
 //     new_node->key = strdup(key);
 //     new_node->value = strdup(value);
 //     new_node->next = NULL;
@@ -614,7 +693,7 @@ int main(int argc, char *argv[]) {
 //         ht->buckets[index] = new_node;
 //     } else {
 //         // Add to end of chain
-//         struct hash_node *current = ht->buckets[index];
+//         hash_node *current = ht->buckets[index];
 //         while (current->next != NULL) {
 //             current = current->next;
 //         }
@@ -622,10 +701,10 @@ int main(int argc, char *argv[]) {
 //     }
 // }
 
-// char *lookup(struct hash_table *ht, char *key) {
+// char *lookup(hash_table *ht, char *key) {
 //     unsigned int index = hash(key);
     
-//     struct hash_node *current = ht->buckets[index];
+//     hash_node *current = ht->buckets[index];
 //     while (current != NULL) {
 //         if (strcmp(current->key, key) == 0) {  // Compare actual keys
 //             return current->value;

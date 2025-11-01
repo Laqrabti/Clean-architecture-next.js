@@ -1,0 +1,2 @@
+This is normal output
+Another normal message
