@@ -17,16 +17,6 @@ int main() {
 
     printf("%c\n", family->name[name_size - 2]);
 
-  
-
-
-
-
-
-
-
-
-
 
     // int length = strlen("hassan");
 

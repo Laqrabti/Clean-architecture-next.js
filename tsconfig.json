@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    //Decorator config
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+
     "target": "ES2022",
     "lib": ["dom", "dom.iterable", "esnext"],
     "module": "ESNext",
@@ -22,7 +26,10 @@
         "name": "next"
       }
     ]
+    
   },
+  
+
   "include": ["**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/scripts/executable.mts"],
   "exclude": ["node_modules"]
 }

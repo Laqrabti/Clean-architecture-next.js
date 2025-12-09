@@ -168,8 +168,6 @@ type value2 = ValueOf<typeof fruitColors>
 type FruitColorB =
   (typeof fruitColors)[keyof typeof fruitColors]; // "red" | "yellow" | "purple"
 
-
-
 // 1. Mock implementations of the three profile-fetching functions
 async function getProfileA(userId: string) {
   return {
