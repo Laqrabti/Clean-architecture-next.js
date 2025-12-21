@@ -16,7 +16,7 @@ interface ProductSectionProps {
   sectionTitle: string;
 }
 
-const ProductSection: FC<ProductSectionProps> = ({ products, sectionTitle }) => {
+export const ProductSection: FC<ProductSectionProps> = ({ products, sectionTitle }) => {
   return (
     <section className="py-16 bg-gradient-to-br from-gray-50 to-white">
       <div className="container mx-auto px-4">

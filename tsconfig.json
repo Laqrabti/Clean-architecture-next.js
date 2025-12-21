@@ -1,35 +1,42 @@
+// tsconfig.json (keep ONLY this one)
 {
   "compilerOptions": {
-    //Decorator config
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-
     "target": "ES2022",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "module": "ESNext",
-    "moduleResolution": "bundler", // Changed from "node" to "bundler"
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
+    "skipLibCheck": true,
     "strict": true,
+    "noEmit": true,
     "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "incremental": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./*"]
-    },
-    "skipLibCheck": true,
-    "noEmit": true,
     "plugins": [
       {
         "name": "next"
       }
-    ]
-    
+    ],
+    "paths": {
+      "@/*": [
+        "./*"
+      ]
+    }
   },
-  
-
-  "include": ["**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/scripts/executable.mts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

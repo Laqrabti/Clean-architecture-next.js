@@ -1,16 +1,19 @@
-import {boolean, never, z} from "zod"
+import { strict } from "assert";
+import { parse } from "path";
+import { useMemo, useState } from "react";
+import {boolean, never, number, z} from "zod"
 
 // // const users = [
 // //   { id: 1, name: "Alice", age: 25 },
 // //   { id: 2, name: "Bob", age: 17 }
 // // ];
 
-import { use } from "react";
-import { number, string } from "zod";
-import { extend } from "zod/mini";
-import { VariableIcon } from "lucide-react";
-import { log } from "node:console";
-import path from "node:path";
+// import { use } from "react";
+// import { number, string } from "zod";
+// import { extend } from "zod/mini";
+// import { VariableIcon } from "lucide-react";
+// import { log } from "node:console";
+// import path from "node:path";
 
 
 // import { error } from "console";
@@ -451,19 +454,19 @@ import path from "node:path";
 
 // const acceptableProducts = products.filter(product => product.inStock && product.price < 500)
 // console.log(acceptableProducts);
-const userData = [
-  ['name', 'age', 'city'],
-  ['Alice', 25, 'New York'],
-  ['Bob', 30, 'London'], 
-  ['Charlie', 35, 'Tokyo']
-];
+// const userData = [
+//   ['name', 'age', 'city'],
+//   ['Alice', 25, 'New York'],
+//   ['Bob', 30, 'London'], 
+//   ['Charlie', 35, 'Tokyo']
+// ];
 
-const keys = userData[0];
-const newArray = userData.reduce((acc, row, i) => {
-    if (i === 0) return acc; // Skip header
-    acc.push(Object.fromEntries(keys.map((key, j) => [key, row[j]])));
-    return acc;
-}, []);
+// const keys = userData[0];
+// const newArray = userData.reduce((acc, row, i) => {
+//     if (i === 0) return acc; // Skip header
+//     acc.push(Object.fromEntries(keys.map((key, j) => [key, row[j]])));
+//     return acc;
+// }, []);
 
 
 // let dynamicObject: Record<string, string | number> = {
@@ -976,22 +979,21 @@ const mixedFiles = [
 
 // console.log(getPaths(mixedFiles));
 
+// const CATEGORIES: [string, string, string] = ["components", "utils", "types"] as const;
 
-const CATEGORIES: [string, string, string] = ["components", "utils", "types"] as const;
+// const CategorySet = new Set<string>(CATEGORIES as readonly string[])
 
-const CategorySet = new Set<string>(CATEGORIES as readonly string[])
+// type FileCategory2 = (typeof CATEGORIES)[number];
 
-type FileCategory2 = (typeof CATEGORIES)[number];
+// type FileCategory3 = "components" | "utils" | "types"
 
-type FileCategory3 = "components" | "utils" | "types"
+// const EXTENSIONS = ["ts", "tsx", "js", "jsx"] as const;
+// type FileExtension2= (typeof EXTENSIONS)[number]
 
-const EXTENSIONS = ["ts", "tsx", "js", "jsx"] as const;
-type FileExtension2= (typeof EXTENSIONS)[number]
+// // const s = new Set(["a", "b", "a", "c", "b"]);
+// // console.log(s);
 
-// const s = new Set(["a", "b", "a", "c", "b"]);
-// console.log(s);
-
-const s = new Set(["x", "y", "z"])
+// const s = new Set(["x", "y", "z"])
 
 // for (const value of s ) {
 //   console.log(value);
@@ -1076,56 +1078,324 @@ const s = new Set(["x", "y", "z"])
 
 // console.log(castingToArray([2,3]));
 // console.log(castingToArray("hello"));
-function log(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
-  const originalMethod = descriptor.value;
-  descriptor.value = function (...args: any[]) {
-    console.log(`Calling ${propertyKey} with args:`, args);
-    return originalMethod.apply(this, args);
-  };
-}
+// function log(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+//   const originalMethod = descriptor.value;
+//   descriptor.value = function (...args: any[]) {
+//     console.log(`Calling ${propertyKey} with args:`, args);
+//     return originalMethod.apply(this, args);
+//   };
+// }
 
-// Usage in a class
-class Calculator {
-  @log
-  add(a: number, b: number): number {
-    return a + b;
-  }
-}
+// // Usage in a class
+// class Calculator {
+//   @log
+//   add(a: number, b: number): number {
+//     return a + b;
+//   }
+// }
 
-const calc = new Calculator();
-calc.add(2, 3);  // Should now work! ✅
+// const calc = new Calculator();
+// calc.add(2, 3);  // Should now work! ✅
 
 
 
-// HOF: Takes a function and returns a memoized version with caching
-function memoize<T extends any[], R>(fn: (...args: T) => R  ): (...args: T) => R {
-  const cache = new Map<string, R>();  // Cache store using JSON-stringified args as keys
-  return function (...args: T): R {
-    const key = JSON.stringify(args);  // Create a unique key from arguments
-    if (cache.has(key)) {
-      // If cached, return the stored result
-      return cache.get(key)!;
-    }
-    // Otherwise, compute the result
-    const result = fn(...args);
-    // Store it in cache
-    cache.set(key, result);
-    return result;
-  };
-}
+// // HOF: Takes a function and returns a memoized version with caching
+// function memoize<T extends any[], R>(fn: (...args: T) => R  ): (...args: T) => R {
+//   const cache = new Map<string, R>();  // Cache store using JSON-stringified args as keys
+//   return function (...args: T): R {
+//     const key = JSON.stringify(args);  // Create a unique key from arguments
+//     if (cache.has(key)) {
+//       // If cached, return the stored result
+//       return cache.get(key)!;
+//     }
+//     // Otherwise, compute the result
+//     const result = fn(...args);
+//     // Store it in cache
+//     cache.set(key, result);
+//     return result;
+//   };
+// }
 
-// Example: Original expensive function (e.g., API data processor)
-function computeHeavyTask(x: number, y: number): number {
-  // Simulate heavy computation
-  console.log('Computing...');
-  return x * y * Math.random();  // Random to show it's only called once per unique args
-}
+// // Example: Original expensive function (e.g., API data processor)
+// function computeHeavyTask(x: number, y: number): number {
+//   // Simulate heavy computation
+//   console.log('Computing...');
+//   return x * y * Math.random();  // Random to show it's only called once per unique args
+// }
 
-// Using the HOF
-const memoizedTask = memoize(computeHeavyTask);
-// First call: Logs 'Computing...' and computes
-memoizedTask(2, 3);
-// Second call with same args: Uses cache, no log
-memoizedTask(2, 3);
-// Different args: Computes again
-memoizedTask(4, 5);
+// // Using the HOF
+// const memoizedTask = memoize(computeHeavyTask);
+// // First call: Logs 'Computing...' and computes
+// memoizedTask(2, 3);
+// // Second call with same args: Uses cache, no log
+// memoizedTask(2, 3);
+// // Different args: Computes again
+// memoizedTask(4, 5);
+
+
+// const timer = setTimeout(() => {
+//     console.log("hassan"); 
+// }, 4000)
+
+
+// class Animal {
+//   constructor(protected name: string, protected age = 2 ) {
+//     this.name = name.trim()
+
+//     console.log(`the correct name is: ${this.name}`);
+    
+//   }
+//   speak(): string {
+//     return `${this.name} makes a sound and its age is ${this.age}`
+//   }
+// }
+// class Dog extends Animal {
+//   constructor(username: string, age: number, private breed?: string) {
+//     super(username, age)
+//   }
+
+//   doesItBreed(): boolean {
+//     return this.breed ? true : false
+//   }
+// }
+
+// const dogInstance = new Dog("bergi", 3, "yes")
+// console.log(dogInstance.speak());
+// console.log(dogInstance.doesItBreed());
+
+// class Animal {
+//     protected name: string;
+//     protected age: number;
+    
+//     constructor(name: string) {
+//         this.name = name;
+//         this.age = 0;
+//     }
+    
+//     speak(): string {
+//         return `${this.name} makes a sound`;
+//     }
+    
+//     eat(food: string): string {
+//         return `${this.name} is eating ${food}`;
+//     }
+    
+//     celebrateBirthday(): string {
+//         this.age += 1;
+//         return `${this.name} is now ${this.age} years old!`;
+//     }
+    
+//     // Method that uses 'this' context - important for binding demonstration
+//     introduce(): string {
+//         return `I am ${this.name}, a ${this.constructor.name}`;
+//     }
+// }
+
+// const instance = new Animal("dog")
+// console.log(instance.introduce());
+
+
+// // Derived class inheriting from Animal
+// class Dog extends Animal {
+//     private breed: string;
+    
+//     constructor(name: string, breed: string) {
+//         // Call parent class constructor
+//         super(name);
+//         this.breed = breed;
+//     }
+    
+//     // Override parent method
+//     speak(): string {
+//         return `${this.name} barks: Woof! Woof!`;
+//     }
+    
+//     // New method specific to Dog
+//     fetch(item: string): string {
+//         return `${this.name} (${this.breed}) fetches the ${item}`;
+//     }
+    
+//     // Override introduce method
+//     introduce(): string {
+//         return `${super.introduce()} of breed ${this.breed}`;
+//     }
+// }
+
+
+// class Animals {
+//     introduce() {
+//         return `I'm a ${this.constructor.name}`;
+//     }
+// }
+
+// class Dogi extends Animals {}
+// class Cati extends Animals {}
+
+// const dog = new Dogi();
+// console.log(dog.introduce());
+//  // "I'm a Dog" ✅
+
+// const cat = new Cati();
+// console.log(cat.introduce());
+//  // "I'm a Cat" ✅
+
+
+// // Types of products
+// interface Animal {
+//     speak(): string;
+// }
+
+// class Dog implements Animal {
+//     speak() { return "Woof!"; }
+// }
+
+// class Cat implements Animal {
+//     speak() { return "Meow!"; }
+// }
+
+// // Factory
+// class AnimalFactory {
+//     static createAnimal(type: 'dog' | 'cat'): Animal {
+//         if (type === 'dog') return new Dog();
+//         if (type === 'cat') return new Cat();
+//         throw new Error("Unknown animal type");
+//     }
+// }
+
+// // Usage
+// const myPet = AnimalFactory.createAnimal('dog');
+// console.log(myPet.speak()); // "Woof!" ✅
+// // You don't know it's a Dog, just that it's an Animal
+
+
+// const jsonString = '{"name":"John","age":30}';
+// const parsedData = JSON.parse(jsonString)
+// console.log(parsedData);
+
+// const obj = JSON.parse('{"name":"John"}');
+
+// export async function() {
+//   const response = await fetch("url")
+
+// }
+
+// async function myFunction() {
+
+// }
+
+// export const newFunction = function() {
+//   return "hello"
+// }
+
+// export const anotherFunction = () => {
+//   return "hey"
+// }
+
+// export default anotherFunction()
+
+
+// let x; // undefined - never had a value
+// console.log(x); // undefined
+
+// const myError = new Error('Failed!');
+// console.log(myError instanceof Error); // true
+
+// const notError = 'just a string';
+// console.log(notError instanceof Error); // false
+
+
+// try {
+//   const user = "hasan";
+//   user.getName(); // TypeError: Cannot read properties of null
+// } catch (error) {
+//   if (error instanceof TypeError) {
+//     console.log('TypeError:', error.message);
+//   }
+// }
+
+
+// try {
+//   const response = { data: null };
+//   const parsed = JSON.parse(response.data); // What happens here?
+//   console.log(parsed.user.name);
+// } catch (error) {
+//   if(error instanceof TypeError)  {
+//     console.log("Type error cannot parse a null value to a string:", error.message);
+//   }
+// }
+
+// const names = `{"name": "hassan"}`
+// const parsedName = JSON.parse(names)
+// console.log(parsedName);
+
+// const name2 = null
+// const parsedName2 = JSON.parse(name2)
+
+// const obj = {1: "one", 2: "two", 3: "three"}
+// console.log(Object.keys(obj)[1]);
+
+
+
+// const jsonString = '{"name": "hassan"}'; // String with quotes
+// const parsed = JSON.parse(jsonString);    // ✅ Works
+// console.log(parsed.name); // "hassan"
+
+
+// try {
+//   let obj = undefined;
+//   // obj = {property: "hassan"}
+//   console.log( obj.property);
+  
+// } catch (error) {
+//   if (error instanceof TypeError) {
+//     console.log("TypeError:", error.message);
+    
+//   }
+// }
+
+// const newError = new Error("Custom message");
+// // newError.cause = error; // Attach original error
+// // throw newError;
+// const name = "hassan"
+
+// console.log(newError instanceof Error);
+
+
+
+// const myObj = {name: "hassan", friend: "nazih"}
+
+// const newObj = {...myObj, third: "batata"}
+// console.log(newObj);
+
+
+// const fruit = { apple: 1, banana: 2 };  
+
+// const field = "banana"
+// const newValue = 4
+
+// const newObj = {...fruit, field: newValue}
+// const correctObj = {...fruit, [field]: newValue}
+
+// console.log("without overriding:", newObj);
+// console.log("overring the value:", correctObj);
+
+
+// const numbers = [1,2,3,4,6]
+
+// const total = numbers.reduce((acc, num) => ( acc + num), 0)
+// console.log(total);
+
+// const newArray = numbers.map((number, i) => (
+//         number * 2 
+// ))
+
+// console.log(newArray);
+
+// const findNumber = numbers.find(number =>  number < 4 && number > 2)
+// console.log(findNumber);
+
+const products = [{id: 1}, {id: 2}, {id: 3}]
+const notFound = products.find(p => p.id === 99)
+// Returns: undefined
+
+console.log(notFound);

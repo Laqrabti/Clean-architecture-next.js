@@ -122,11 +122,11 @@ export default function ChatbotLogoTransitionSimple() {
     window.addEventListener("orientationchange", onResizeOrLoad);
     window.addEventListener("load", onResizeOrLoad);
 
-    // initial update
+
     update();
 
     return () => {
-      // cleanup
+ 
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onResizeOrLoad);
       window.removeEventListener("orientationchange", onResizeOrLoad);
